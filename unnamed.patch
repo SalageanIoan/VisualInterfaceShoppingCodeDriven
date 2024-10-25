@@ -1,0 +1,32 @@
+Index: src/Interfaces/LoginSelection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Interfaces/LoginSelection.java b/src/Interfaces/LoginSelection.java
+--- a/src/Interfaces/LoginSelection.java	
++++ b/src/Interfaces/LoginSelection.java	(date 1729616631487)
+@@ -62,10 +62,20 @@
+     }
+ 
+     private void onAdmin() {
++        JPasswordField passwordField = new JPasswordField();
++        int option = JOptionPane.showConfirmDialog(this, passwordField, "Enter Admin Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+ 
+-        dispose();
+-        System.out.println("Admin Login clicked");
+-        new AdminMenu(); // Opens the AdminMenu window
++        if (option == JOptionPane.OK_OPTION) {
++            String enteredPassword = new String(passwordField.getPassword());
++
++            if (ADMIN_PASSWORD.equals(enteredPassword)) {
++                dispose();
++                System.out.println("Admin Login clicked");
++                new AdminMenu();
++            } else {
++                JOptionPane.showMessageDialog(this, "Incorrect password", "Error", JOptionPane.ERROR_MESSAGE);
++            }
++        }
+     }
+ 
+     private void onClient() {
