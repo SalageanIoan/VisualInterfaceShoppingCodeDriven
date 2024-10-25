@@ -6,6 +6,8 @@ import Managment.ClientPremium;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Checkout extends JFrame {
@@ -15,8 +17,8 @@ public class Checkout extends JFrame {
     private ShoppingCart shoppingCart;
     private JTextArea summaryTextArea;
 
-    public Checkout(Client client, ShoppingCart shoppingCart) {
-        this.client = client;
+    public Checkout(Client client,ShoppingCart shoppingCart) {
+        this.client=client;
         this.shoppingCart = shoppingCart;
 
         setTitle("Checkout");
@@ -37,8 +39,10 @@ public class Checkout extends JFrame {
         contentPane.add(buttonCheckout, BorderLayout.SOUTH);
         setContentPane(contentPane);
 
-        buttonCheckout.addActionListener(e -> {
-            confirmCheckout();
+        buttonCheckout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                confirmCheckout();
+            }
         });
 
         setVisible(true);
@@ -74,7 +78,7 @@ public class Checkout extends JFrame {
     }
 
     public static void main(String[] args) {
-        Client client = new Client();
-        new Checkout(client, new ShoppingCart(client));
+        Client client=new Client();
+        new Checkout(client,new ShoppingCart(client));
     }
 }

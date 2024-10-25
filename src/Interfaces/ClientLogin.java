@@ -18,9 +18,9 @@ public class ClientLogin extends JFrame {
     private Client client;
 
     private static List<Client> loggedInClients = new ArrayList<Client>() {{
-        add(new Client("Alice", "alice@gmail.com"));
-        add(new Client("Bob", "bob@gmail.com"));
-        add(new Client("Charlie", "charlie@gmail.com"));
+        add(new Client("Ana", "ana@gmail.com"));
+        add(new Client("Mihai", "mihai@gmail.com"));
+        add(new Client("Carla", "carla@gmail.com"));
     }};
 
 
