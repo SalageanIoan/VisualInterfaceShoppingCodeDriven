@@ -5,6 +5,8 @@ import Internal.ShoppingCartMain;
 import Managment.Client;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.*;
 
 public class ShoppingCart extends JFrame {
@@ -37,7 +39,11 @@ public class ShoppingCart extends JFrame {
 
         setContentPane(contentPane);
 
-        buttonCheckout.addActionListener(e -> onCheckout());
+        buttonCheckout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCheckout();
+            }
+        });
 
         setVisible(true);
     }

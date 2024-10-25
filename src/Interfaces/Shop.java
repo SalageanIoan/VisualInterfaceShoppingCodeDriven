@@ -5,6 +5,8 @@ import Internal.ShoppingCartMain;
 import Managment.Client;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Shop extends JFrame {
     private JPanel contentPane;
@@ -45,23 +47,35 @@ public class Shop extends JFrame {
 
         setContentPane(contentPane);
 
-        buttonCancel.addActionListener(e -> {
-            dispose();
-            System.out.println("Shop closed");
+        buttonCancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onExit();
+            }
         });
 
-        buttonAddToCart.addActionListener(e -> {
-            Product selectedProduct = productList.getSelectedValue();
-            if (selectedProduct != null) {
-                client.addProductToCart(selectedProduct, 1);
-                shoppingCart.updateCartList();
-                System.out.println(selectedProduct.getName() + " added to cart.");
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select a product to add to the cart.");
+        buttonAddToCart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onAddToCart();
             }
         });
 
         setVisible(true);
+    }
+
+    private void onExit() {
+        dispose();
+        System.out.println("Shop closed");
+    }
+
+    private void onAddToCart() {
+        Product selectedProduct = productList.getSelectedValue();
+        if (selectedProduct != null) {
+            client.addProductToCart(selectedProduct, 1);
+            shoppingCart.updateCartList();
+            System.out.println(selectedProduct.getName() + " added to cart.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a product to add to the cart.");
+        }
     }
 
     public static void addProductsToList() {

@@ -41,7 +41,6 @@ public class LoginSelection extends JFrame {
             }
         });
 
-        // Add ActionListener for the Client button
         buttonClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onClient();
@@ -54,14 +53,12 @@ public class LoginSelection extends JFrame {
             }
         });
 
-        // Handle window closing behavior
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
                 onCancel();
             }
         });
 
-        // Register ESC key to trigger the cancel action
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
